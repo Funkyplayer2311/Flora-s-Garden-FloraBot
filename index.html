@@ -102,37 +102,63 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const jsonString = `{
-        "Rules": "https://discord.com/api/webhooks/1416727034654363658/XU9wgGlSZILNyeL1xwM7oM-NIe39_6Cn3EB8ys88gsuMfuL4M5ZiGaerpADhDuCE2oss",
-        "announcements": "https://discord.com/api/webhooks/1416727705759514674/J9FN6RI9ch9VB8aPFX7ZppVJEbeZc_pCBr0HolsBhDPOWLRtySHcz69sEe4YCaJyO6pd",
-        "Staff-Talk": "https://discord.com/api/webhooks/1416727864761520221/ar-tsBK5bSaT81xX8DSa0dQFmUC9nmbQatWlruzd77PCkC2RD5dZPE8inVOnOocSJRAS",
-        "Staffs": "https://discord.com/api/webhooks/1343475548256600075/oFH9yT72dpc9MxIrtrN2l0t0XJpdmkP5ZO73dz9_i5fGejZ_gGNgTzydOPKapBdwLYlD",
-        "Polls": "https://discord.com/api/webhooks/1416728215141220372/xByKVq9wcmT8wiH_OvQ0z8l4MPVg2ikZcmk6PE3w3RvGkYW77CRRSOLWBiKTqLoTbSmQ",
-        "Staff-of-The-Month": "https://discord.com/api/webhooks/1416728325476450355/Us-8u9VbM4AlT9vEaJc2MekIr0s0bHbOvylreeScEkVB5YEakh98IRiqrUJflxgJXfa7",
-        "Artist-of-The-Month": "https://discord.com/api/webhooks/1416728495152693278/wDPQW5CILM6ojBTqnpcTS0rdLv89M23Z86LqhVQ9oDMmVbf5NkKHjhoE-JHyFF7LDyPL",
-        "Booster-Perks": "https://discord.com/api/webhooks/1416728638375854132/1LsLHqhscU1pnBp6q6mI6MrGafuGVt4LNqjwDqiqNJGnpzJOpXu2VKNxjFlKcRs2cd6r",
-        "Boosts": "https://discord.com/api/webhooks/1416728845868072960/tSHDlrdNEIWUmEIWobDanUwy-RAAOCFdNTk9Ewc1GLXycEyS5ntjpHg2DB4wheCvDNud",
-        "Chat": "https://discord.com/api/webhooks/1416728955943260233/MEjzeAuz0RQAyYyyEm8roqMTKV40RpFmjkY5iaHw0f7t6P3ebGK7zq5JXh1BivC8yonJ",
-        "Media": "https://discord.com/api/webhooks/1416729075560480769/etnpD8Q-pmWwuekInkKn7wT63pG-5CMohacZoRFPrY6tid0nK0i4usN5i435WSy5Aut0",
-        "Memes": "https://discord.com/api/webhooks/1416729191184990338/16zk5VaoFd46uQ7ItancJsOZdCW5SBUmVcPyed94mDu_Jsq8my73exp_GnPG5Wlf40e9",
-        "Introductions": "https://discord.com/api/webhooks/1416729302355148942/Oz8xb_dQbcLUJFhU_0dP-L59gnsGHoH5eMJila86pGhfNKxw6rSE6YlO_vnwKR_MrYjX",
-        "Pets": "https://discord.com/api/webhooks/1416729460270694442/4Y92uCNJUs3Xn0dW_zhP7fh-E32MtID-mDO8FghoVfpnfseZqCZ5D7LIgiwrUX1MxR3y",
-        "Confession-Box": "https://discord.com/api/webhooks/1416729588696088667/oLHPjuB7n_DWCcB12ipjkdADdgdmVQuavW3zubOmabfXOgKwZZHxh-MtEMHy5Shax8-K",
-        "Roles": "https://discord.com/api/webhooks/1416729734808604723/L-NqKUOBP0yrL9x4eoWHVKce3CygQ-PY2Jxp7oX8xutMGcsAc-oOuQUy3veYsJKD-SRb",
-        "Reaction-Roles": "https://discord.com/api/webhooks/1416729863972192286/MdYPhcRpCg28dRO4oVf4qLp-rMNME9DwaQNcJ3_-AeedOTTmZGQ3eA-PBmPho0uzLxAe",
-        "Art": "https://discord.com/api/webhooks/1416730057040465930/7DYzMv2i-fsSUbpa_rKWAJZIiz9MOnlc9vjRRAy6tAX6wWE393svgS6w91dF8vkbtSy_",
-        "Art-Help": "https://discord.com/api/webhooks/1416730316831461509/q0JCKHGaVLPdSUbtytU-UykgY1GT-GglJ8vkuA9e1GDsKLLUTz3jE6q_heOYZ1rYdtfE"
-      }`;
+    const webhooks = {
+      "Rules": "https://discord.com/api/webhooks/1416727034654363658/XU9wgGlSZILNyeL1xwM7oM-NIe39_6Cn3EB8ys88gsuMfuL4M5ZiGaerpADhDuCE2oss",
+      "announcements": "https://discord.com/api/webhooks/1416727705759514674/J9FN6RI9ch9VB8aPFX7ZppVJEbeZc_pCBr0HolsBhDPOWLRtySHcz69sEe4YCaJyO6pd",
+      "Staff-Talk": "https://discord.com/api/webhooks/1416727864761520221/ar-tsBK5bSaT81xX8DSa0dQFmUC9nmbQatWlruzd77PCkC2RD5dZPE8inVOnOocSJRAS",
+      "Staffs": "https://discord.com/api/webhooks/1343475548256600075/oFH9yT72dpc9MxIrtrN2l0t0XJpdmkP5ZO73dz9_i5fGejZ_gGNgTzydOPKapBdwLYlD",
+      "Polls": "https://discord.com/api/webhooks/1416728215141220372/xByKVq9wcmT8wiH_OvQ0z8l4MPVg2ikZcmk6PE3w3RvGkYW77CRRSOLWBiKTqLoTbSmQ",
+      "Chat": "https://discord.com/api/webhooks/1416728955943260233/MEjzeAuz0RQAyYyyEm8roqMTKV40RpFmjkY5iaHw0f7t6P3ebGK7zq5JXh1BivC8yonJ",
+      "Art": "https://discord.com/api/webhooks/1416730057040465930/7DYzMv2i-fsSUbpa_rKWAJZIiz9MOnlc9vjRRAy6tAX6wWE393svgS6w91dF8vkbtSy_"
+    };
 
-      const webhooks = JSON.parse(jsonString);
-        const select = document.getElementById("channel");
-  
-        // Populate the select dropdown with channel names
-        Object.keys(webhooks).forEach(channel => {
-          const option = document.createElement("option");
-          option.value = channel;
-          option.textContent = channel.replace(/-/g, " ");
-          select.appendChild(option);
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("channel");
+      for (const name in webhooks) {
+        const option = document.createElement("option");
+        option.value = webhooks[name];
+        option.textContent = name;
+        select.appendChild(option);
+      }
+    });
+
+    function previewImage() {
+      const file = document.getElementById("image").files[0];
+      const preview = document.getElementById("preview");
+      preview.innerHTML = "";
+      if (file) {
+        const img = document.createElement("img");
+        img.src = URL.createObjectURL(file);
+        preview.appendChild(img);
+      }
+    }
+
+    async function sendMessage() {
+      const webhook = document.getElementById("channel").value;
+      const message = document.getElementById("message").value;
+      const imageFile = document.getElementById("image").files[0];
+
+      const formData = new FormData();
+      formData.append("content", message);
+      if (imageFile) {
+        formData.append("file", imageFile);
+      }
+
+      try {
+        const response = await fetch(webhook, {
+          method: "POST",
+          body: formData
         });
-      });
+
+        if (response.status === 204) {
+          alert("✅ Message sent!");
+        } else {
+          alert("❌ Failed to send: " + response.status);
+        }
+      } catch (error) {
+        alert("❌ Error: " + error.message);
+      }
+    }
+  </script>
+</body>
+</html>
