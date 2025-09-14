@@ -169,11 +169,10 @@
       body: formData
     });
 
-    const result = await response.text(); // Optional: log response body
-    console.log("Response:", result);
-
     if (response.ok) {
       alert("✅ Message sent!");
+      const result = await response.text();
+      if (result) console.log("Response:", result);
     } else {
       alert("❌ Failed to send: " + response.status);
     }
@@ -184,4 +183,5 @@
   </script>
 </body>
 </html>
+
 
