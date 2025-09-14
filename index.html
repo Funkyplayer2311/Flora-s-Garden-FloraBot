@@ -48,6 +48,8 @@
     select {
       background-color: #2c2f33;
       color: white;
+      max-height: 150px;
+      overflow-y: auto;
     }
 
     textarea {
@@ -88,7 +90,7 @@
     <h2>📨 Discord Webhook Messenger</h2>
 
     <label for="channel">Channel</label>
-    <select id="channel"></select>
+    <select id="channel" size="5"></select>
 
     <label for="message">Message</label>
     <textarea id="message" rows="4" placeholder="Type your message..."></textarea>
@@ -111,6 +113,7 @@
         "Polls": "https://discord.com/api/webhooks/1416728215141220372/xByKVq9wcmT8wiH_OvQ0z8l4MPVg2ikZcmk6PE3w3RvGkYW77CRRSOLWBiKTqLoTbSmQ",
         "Chat": "https://discord.com/api/webhooks/1416728955943260233/MEjzeAuz0RQAyYyyEm8roqMTKV40RpFmjkY5iaHw0f7t6P3ebGK7zq5JXh1BivC8yonJ",
         "Art": "https://discord.com/api/webhooks/1416730057040465930/7DYzMv2i-fsSUbpa_rKWAJZIiz9MOnlc9vjRRAy6tAX6wWE393svgS6w91dF8vkbtSy_"
+        // Add more channels here if needed
       };
 
       const select = document.getElementById("channel");
