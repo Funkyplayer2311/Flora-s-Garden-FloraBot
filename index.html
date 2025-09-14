@@ -153,31 +153,35 @@
     }
 
     async function sendMessage() {
-      const webhook = document.getElementById("channel").value;
-      const message = document.getElementById("message").value;
-      const imageFile = document.getElementById("image").files[0];
+  const webhook = document.getElementById("channel").value;
+  const message = document.getElementById("message").value;
+  const imageFile = document.getElementById("image").files[0];
 
-      const formData = new FormData();
-      formData.append("content", message);
-      if (imageFile) {
-        formData.append("file", imageFile);
-      }
+  const formData = new FormData();
+  formData.append("content", message);
+  if (imageFile) {
+    formData.append("file", imageFile);
+  }
 
-      try {
-        const response = await fetch(webhook, {
-          method: "POST",
-          body: formData
-        });
+  try {
+    const response = await fetch(webhook, {
+      method: "POST",
+      body: formData
+    });
 
-        if (response.status === 204) {
-          alert("✅ Message sent!");
-        } else {
-          alert("❌ Failed to send: " + response.status);
-        }
-      } catch (error) {
-        alert("❌ Error: " + error.message);
-      }
+    const result = await response.text(); // Optional: log response body
+    console.log("Response:", result);
+
+    if (response.ok) {
+      alert("✅ Message sent!");
+    } else {
+      alert("❌ Failed to send: " + response.status);
     }
+  } catch (error) {
+    alert("❌ Error: " + error.message);
+  }
+}
   </script>
 </body>
 </html>
+
