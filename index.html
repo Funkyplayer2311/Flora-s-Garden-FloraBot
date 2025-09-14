@@ -102,17 +102,17 @@
   </div>
 
   <script>
-    const webhooks = {
-      "Rules": "https://discord.com/api/webhooks/1416727034654363658/XU9wgGlSZILNyeL1xwM7oM-NIe39_6Cn3EB8ys88gsuMfuL4M5ZiGaerpADhDuCE2oss",
-      "announcements": "https://discord.com/api/webhooks/1416727705759514674/J9FN6RI9ch9VB8aPFX7ZppVJEbeZc_pCBr0HolsBhDPOWLRtySHcz69sEe4YCaJyO6pd",
-      "Staff-Talk": "https://discord.com/api/webhooks/1416727864761520221/ar-tsBK5bSaT81xX8DSa0dQFmUC9nmbQatWlruzd77PCkC2RD5dZPE8inVOnOocSJRAS",
-      "Staffs": "https://discord.com/api/webhooks/1343475548256600075/oFH9yT72dpc9MxIrtrN2l0t0XJpdmkP5ZO73dz9_i5fGejZ_gGNgTzydOPKapBdwLYlD",
-      "Polls": "https://discord.com/api/webhooks/1416728215141220372/xByKVq9wcmT8wiH_OvQ0z8l4MPVg2ikZcmk6PE3w3RvGkYW77CRRSOLWBiKTqLoTbSmQ",
-      "Chat": "https://discord.com/api/webhooks/1416728955943260233/MEjzeAuz0RQAyYyyEm8roqMTKV40RpFmjkY5iaHw0f7t6P3ebGK7zq5JXh1BivC8yonJ",
-      "Art": "https://discord.com/api/webhooks/1416730057040465930/7DYzMv2i-fsSUbpa_rKWAJZIiz9MOnlc9vjRRAy6tAX6wWE393svgS6w91dF8vkbtSy_"
-    };
-
     document.addEventListener("DOMContentLoaded", () => {
+      const webhooks = {
+        "Rules": "https://discord.com/api/webhooks/1416727034654363658/XU9wgGlSZILNyeL1xwM7oM-NIe39_6Cn3EB8ys88gsuMfuL4M5ZiGaerpADhDuCE2oss",
+        "announcements": "https://discord.com/api/webhooks/1416727705759514674/J9FN6RI9ch9VB8aPFX7ZppVJEbeZc_pCBr0HolsBhDPOWLRtySHcz69sEe4YCaJyO6pd",
+        "Staff-Talk": "https://discord.com/api/webhooks/1416727864761520221/ar-tsBK5bSaT81xX8DSa0dQFmUC9nmbQatWlruzd77PCkC2RD5dZPE8inVOnOocSJRAS",
+        "Staffs": "https://discord.com/api/webhooks/1343475548256600075/oFH9yT72dpc9MxIrtrN2l0t0XJpdmkP5ZO73dz9_i5fGejZ_gGNgTzydOPKapBdwLYlD",
+        "Polls": "https://discord.com/api/webhooks/1416728215141220372/xByKVq9wcmT8wiH_OvQ0z8l4MPVg2ikZcmk6PE3w3RvGkYW77CRRSOLWBiKTqLoTbSmQ",
+        "Chat": "https://discord.com/api/webhooks/1416728955943260233/MEjzeAuz0RQAyYyyEm8roqMTKV40RpFmjkY5iaHw0f7t6P3ebGK7zq5JXh1BivC8yonJ",
+        "Art": "https://discord.com/api/webhooks/1416730057040465930/7DYzMv2i-fsSUbpa_rKWAJZIiz9MOnlc9vjRRAy6tAX6wWE393svgS6w91dF8vkbtSy_"
+      };
+
       const select = document.getElementById("channel");
       for (const name in webhooks) {
         const option = document.createElement("option");
