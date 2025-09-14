@@ -15,9 +15,9 @@
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #5865F2, #23272A);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
+      padding: 20px;
     }
 
     .container {
@@ -31,6 +31,7 @@
       color: white;
       overflow-y: auto;
       max-height: 90vh;
+      margin-bottom: 20px;
     }
 
     h2 {
@@ -90,6 +91,21 @@
       border-radius: 10px;
       margin-top: 10px;
     }
+
+    #messageDisplay div {
+      background-color: #2c2f33;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    #messageDisplay strong {
+      color: #ffffff;
+    }
+
+    #messageDisplay small {
+      color: #b9bbbe;
+    }
   </style>
 </head>
 <body>
@@ -108,6 +124,17 @@
     <div class="preview" id="preview"></div>
 
     <button onclick="sendMessage()">Send Message</button>
+  </div>
+
+  <div class="container">
+    <h2>📜 Channel Message Viewer</h2>
+
+    <label for="channelView">Select Channel to View</label>
+    <select id="channelView" size="5"></select>
+
+    <button onclick="loadMessages()">Load Messages</button>
+
+    <div id="messageDisplay"></div>
   </div>
 
   <script>
@@ -140,11 +167,18 @@
       };
 
       const select = document.getElementById("channel");
+      const viewSelect = document.getElementById("channelView");
+
       for (const name in webhooks) {
         const option = document.createElement("option");
         option.value = webhooks[name];
         option.textContent = name;
         select.appendChild(option);
+
+        const viewOption = document.createElement("option");
+        viewOption.value = webhooks[name].split("/")[5]; // Extract channel ID
+        viewOption.textContent = name;
+        viewSelect.appendChild(viewOption);
       }
     });
 
@@ -183,14 +217,26 @@
 
         if (response.ok) {
           alert("✅ Message sent!");
-          const result = await response.text();
-          if (result) console.log("Response:", result);
         } else {
           alert("❌ Failed to send: " + response.status);
         }
       } catch (error) {
         alert("❌ Error: " + error.message);
       }
+    }
+
+    async function loadMessages() {
+      const channelId = document.getElementById("channelView").value;
+      const response = await fetch(`http://localhost:3000/messages/${channelId}`);
+      const messages = await response.json();
+
+      const display = document.getElementById("messageDisplay");
+      display.innerHTML = messages.map(msg => `
+        <div>
+          <strong>${msg.author}</strong>: ${msg.content}
+          <br><small>${new Date(msg.timestamp).toLocaleString()}</small>
+        </div>
+      `).join('');
     }
   </script>
 </body>
